@@ -1,7 +1,7 @@
-﻿path;body;no_head;lung
+﻿path;ROI1;ROI2;ROI3
 rawdata/EXO1_2_12.jpg;2.923e+07;1.587e+06;6.956e+06
 rawdata/EXO2_2_12.jpg;1.866e+07;1.892e+06;6.898e+05
-rawdata/EXO2_1_15.jpg;8.474e+06;1.866e+06;8.491e+05
+rawdata/EXO1_2_15.jpg;8.474e+06;1.866e+06;8.491e+05
 rawdata/EXO2_2_15.jpg;5.061e+06;2.533e+06;1.013e+06
 rawdata/EXO3_2_15.jpg;4.483e+06;2.670e+06;1.248e+06
 rawdata/EXO4_3_8.jpg;8.733e+06;1.911e+06;7.615e+05
@@ -17,9 +17,9 @@ rawdata/EXO_8_1.jpg;7.442e+06;3.440e+06;1.252e+06
 rawdata/MV1_2_15.jpg;5.910e+05;2.982e+05;8.011e+04
 rawdata/MV2_2_15.jpg;2.320e+06;5.716e+05;2.005e+05
 rawdata/MV1_3_8.jpg;1.127e+06;5.444e+05;1.998e+05
-rawdata/MV2_3_8.jpg;4.058e+06;6.237e+05;2.315e+05
+rawdata/MV2_3_8.jpg;4.057e+06;6.237e+05;2.315e+05
 rawdata/MV_7_15.jpg;1.864e+06;1.414e+06;3.995e+05
-rawdata/MV2_7_15.jpg;2.548e+06;2.123e+06;6.873e+05
+rawdata/MV2_7_15.jpg;2.548e+06;2.123e+06;6.783e+05
 rawdata/MV_7_16.jpg;2.223e+06;1.842e+06;5.013e+05
 rawdata/MV2_7_16.jpg;2.503e+06;2.005e+06;6.308e+05
 rawdata/MV_7_22.jpg;1.585e+06;7.269e+05;3.223e+05
