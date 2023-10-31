@@ -1,6 +1,31 @@
 
 import cv2 as cv
 import numpy as np
+import imutils
+
+def rotate(img, deg):
+    """
+    rotates an image img the degrees deg
+    deg has value between -180 and 180
+    
+    """
+    rotated = imutils.rotate_bound(img, deg)
+    return rotated
+
+
+def rotate_same_dim(img, deg):
+    # grab the dimensions of the image and calculate the center of the
+    # image
+    if len(img.shape) > 2:
+        (h, w) = img.shape[:2]
+    else:
+        (h, w) = img.shape
+    (cX, cY) = (w // 2, h // 2)
+    # rotate our image by 45 degrees around the center of the image
+    M = cv.getRotationMatrix2D((cX, cY), deg, 1.0)
+    rotated = cv.warpAffine(img, M, (w, h))
+    return rotated
+
 def paddImage(img, new_shape):
     """
     Cuts or pads the image with zeros to fit the shape new_shape
