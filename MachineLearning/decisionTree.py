@@ -62,7 +62,7 @@ def augment_train(X, Y):
     out_index = 0
 
     for i in range(len(X)):
-        #augment a random number of times inbetween 3 and 10 a random degree number
+        #augment a random number of times inbetween 3 and 10 a random degree number between -30 and 30 degrees
         X_out[out_index] = X[i]
         Y_out[out_index] = Y[i]
         out_index += 1
@@ -146,8 +146,6 @@ for test, pred in zip(y_test, predictions):
     d_pred = pred
     # d_test = deNormalizeYresults(test, maks_y, min_y)
     # d_pred = deNormalizeYresults(pred, maks_y, min_y)
-    
-
 
 
     print(f"img{i} actual: {d_test}, avg: {np.sum(test)/3}")
