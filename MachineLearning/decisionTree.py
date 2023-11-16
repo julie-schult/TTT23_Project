@@ -76,11 +76,6 @@ def augment_train(X, Y):
     return X_out, Y_out
 
 
-
-
-
-
-
 def normalizeY(y):
     log_y = np.log(y)
 
