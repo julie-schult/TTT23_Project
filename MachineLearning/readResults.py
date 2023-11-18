@@ -14,8 +14,23 @@ print(df.loc[np.argmax(df["mse3"])])
 print(df.loc[np.argmax(df["mse_tot"])])
 indecies = [np.argmin(df["mse1"]), np.argmin(df["mse2"]), np.argmin(df["mse3"]), np.argmin(df["mse_tot"]), np.argmax(df["mse1"]), np.argmax(df["mse2"]), np.argmax(df["mse3"]), np.argmax(df["mse_tot"])]
 
+def print_max_mean_avg(df):
+    print(np.amax(df["mse1"]), np.amin(df["mse1"]), np.average(df["mse1"]))
+    print(np.amax(df["mse2"]), np.amin(df["mse2"]), np.average(df["mse2"]))
+    print(np.amax(df["mse3"]), np.amin(df["mse3"]), np.average(df["mse3"]))
+    print(np.amax(df["mse_tot"]), np.amin(df["mse_tot"]), np.average(df["mse_tot"]))
+
+
 df_forest = df.loc[df["random_forest"] == True]
+df_decision = df.loc[df["random_forest"] == False]
+print_max_mean_avg(df_decision)
+df_forest_40 = df_forest.loc[df_forest["n_estimators"] == 40]
+print_max_mean_avg(df_forest_40)
+df_forest_100 = df_forest.loc[df_forest["n_estimators"] == 100]
+print_max_mean_avg(df_forest_100)
+
 df_forest_args100 = df_forest.loc[df_forest["n_estimators"] == 100]
+
 
 indecies_f = [
     df_forest.index[np.argmin(df_forest["mse1"])],   

@@ -172,63 +172,72 @@ for min_samples_split in min_samples_split_arr_r:
                     k+=1
             
             
-            regressor = DecisionTreeRegressor(criterion=criterion_d, min_samples_split=6, min_samples_leaf=min_samples_leaf, max_features="log2")
-            multi_output_regressor = MultiOutputRegressor(regressor)
+            # # regressor = DecisionTreeRegressor(criterion=criterion_d, min_samples_split=6, min_samples_leaf=min_samples_leaf, max_features="log2")
+            # regressor = DecisionTreeRegressor(criterion="poisson", min_samples_split=0.1, min_samples_leaf=1, max_features="log2")
+            # multi_output_regressor = MultiOutputRegressor(regressor)
 
-            start = time.time()
-            multi_output_regressor.fit(X_train, y_train)
-            predictions = multi_output_regressor.predict(X_test)
-            end = time.time()
+            # for i in range(100):
+            #     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            #     start = time.time()
+            #     multi_output_regressor.fit(X_train, y_train)
+            #     predictions = multi_output_regressor.predict(X_test)
+            #     end = time.time()
 
-            mse_per_val = np.sqrt(np.mean((y_test - predictions)**2, axis=0))
-            mse_tot = np.sqrt(np.mean((y_test - predictions)**2))
+            #     mse_per_val = np.sqrt(np.mean((y_test - predictions)**2, axis=0))
+            #     mse_tot = np.sqrt(np.mean((y_test - predictions)**2))
 
-            data["n_estimators"].append(None)
-            data["min_samples_split"].append(6)
-            data["min_samples_leaf"].append(min_samples_leaf)
-            data["criterion"].append(criterion_d)
-            data["max_features"].append("log2")
-            data["bootstrap"].append(None)
-            data["oob_score"].append(None)
-            data["n_jobs"].append(None)
-            data["max_samples"].append(None)
-            data["mse1"].append(mse_per_val[0])
-            data["mse2"].append(mse_per_val[1])
-            data["mse3"].append(mse_per_val[2])
-            data["mse_tot"].append(mse_tot)  
-            data["MAE1"].append(MAE[0])
-            data["MAE2"].append(MAE[1])
-            data["MAE3"].append(MAE[2])
-            data["MAE_tot"].append(MAE_tot)     
-            data["random_forest"].append(False)
-            data["time"].append(end - start)
-            print(f"job {k} of {num_tests}")
-            k+=1
+            #     MAE = np.mean(np.abs(y_test - predictions), axis=0)
+            #     MAE_tot = np.mean(np.abs(y_test - predictions))
+
+            #     data["n_estimators"].append(None)
+            #     data["min_samples_split"].append(0.1)
+            #     data["min_samples_leaf"].append(1)
+            #     data["criterion"].append("poisson")
+            #     data["max_features"].append("log2")
+            #     data["bootstrap"].append(None)
+            #     data["oob_score"].append(None)
+            #     data["n_jobs"].append(None)
+            #     data["max_samples"].append(None)
+            #     data["mse1"].append(mse_per_val[0])
+            #     data["mse2"].append(mse_per_val[1])
+            #     data["mse3"].append(mse_per_val[2])
+            #     data["mse_tot"].append(mse_tot)  
+            #     data["MAE1"].append(MAE[0])
+            #     data["MAE2"].append(MAE[1])
+            #     data["MAE3"].append(MAE[2])
+            #     data["MAE_tot"].append(MAE_tot)     
+            #     data["random_forest"].append(False)
+            #     data["time"].append(end - start)
+            #     print(f"job {k} of {num_tests}")
+            #     # print(data)
+            #     k+=1
 
 
 out_data = pd.DataFrame(data)
 
-print(np.argmin(out_data["mse1"]))
-print(np.argmin(out_data["mse2"]))
-print(np.argmin(out_data["mse3"]))
-print(np.argmin(out_data["mse_tot"]))
-print(np.argmin(out_data["MAE1"]))
-print(np.argmin(out_data["MAE2"]))
-print(np.argmin(out_data["MAE3"]))
-print(np.argmin(out_data["MAE_tot"]))
-
-print(np.argmax(out_data["mse1"]))
-print(np.argmax(out_data["mse2"]))
-print(np.argmax(out_data["mse3"]))
-print(np.argmax(out_data["mse_tot"]))
-print(np.argmax(out_data["MAE1"]))
-print(np.argmax(out_data["MAE2"]))
-print(np.argmax(out_data["MAE3"]))
-print(np.argmax(out_data["MAE_tot"]))
 
 
-out_data.to_csv(f"result{time.strftime('%d_%m_%H_%M', time.gmtime())}.csv")
-for index, row in out_data.iterrows():
-    print(row)
+print(out_data.loc[np.argmin(out_data["mse1"])])
+print(out_data.loc[np.argmin(out_data["mse2"])])
+print(out_data.loc[np.argmin(out_data["mse3"])])
+print(out_data.loc[np.argmin(out_data["mse_tot"])])
+print(out_data.loc[np.argmin(out_data["MAE1"])])
+print(out_data.loc[np.argmin(out_data["MAE2"])])
+print(out_data.loc[np.argmin(out_data["MAE3"])])
+print(out_data.loc[np.argmin(out_data["MAE_tot"])])
+
+# print(np.argmax(out_data["mse1"]))
+# print(np.argmax(out_data["mse2"]))
+# print(np.argmax(out_data["mse3"]))
+# print(np.argmax(out_data["mse_tot"]))
+# print(np.argmax(out_data["MAE1"]))
+# print(np.argmax(out_data["MAE2"]))
+# print(np.argmax(out_data["MAE3"]))
+# print(np.argmax(out_data["MAE_tot"]))
+
+
+# out_data.to_csv(f"result{time.strftime('%d_%m_%H_%M', time.gmtime())}.csv")
+# for index, row in out_data.iterrows():
+#     print(row)
 
 
